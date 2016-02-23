@@ -37,7 +37,7 @@ namespace RogueLike.Utils
             {
                 Console.WriteLine("looped");
                 cursors[i] = new AnimatedTexture(Vector2.Zero, 0, 0.5f, 0);
-                cursors[i].Load(content, "Cursors/Cursor" + (i + 1).ToString(), 2, 2);
+                cursors[i].Load(content, "Cursors/Cursor" + (i + 1).ToString(), 2, 4);
             }
 
             ChangeCursor(0);
