@@ -62,7 +62,7 @@ namespace RogueLike.Managers
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            GraphicsDevice.Clear(Color.Black);
             currentScreen.Draw(spriteBatch);
         }
 
@@ -70,8 +70,9 @@ namespace RogueLike.Managers
         {
             currentScreen.UnloadContent();
             GameScreen newScreen = (GameScreen)Activator.CreateInstance(Type.GetType("RogueLike.Screens." + screenName));
+            newScreen.LoadContent();
             currentScreen = newScreen;
-            currentScreen.LoadContent();
+            GraphicsDevice.Clear(Color.Black);
         }
     }
 }

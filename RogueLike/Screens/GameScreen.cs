@@ -8,13 +8,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using RogueLike.Managers;
+using RogueLike.Libs.Tiled;
 
 namespace RogueLike.Screens
 {
     public class GameScreen
     {
-        protected ContentManager content;
         public Type type;
+
 
         public GameScreen()
         {
@@ -23,12 +24,10 @@ namespace RogueLike.Screens
 
         public virtual void LoadContent()
         {
-            content = new ContentManager(ScreenManager.Instance.Content.ServiceProvider, "Content");
-            content.RootDirectory = "Content";
         }
         public virtual void UnloadContent()
         {
-            content.Unload();
+            ScreenManager.Instance.Content.Unload();
         }
 
         public virtual void Update(GameTime gameTime)

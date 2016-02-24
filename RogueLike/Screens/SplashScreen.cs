@@ -15,15 +15,13 @@ namespace RogueLike.Screens
 
         public float timer = 0;
 
-        public Cursor cursor;
 
         public override void LoadContent()
         {
-            cursor = new Cursor();
-            cursor.LoadContent();
             splashScreenImage = new Image();
             splashScreenImage.Path = "SplashScreenImage";
             splashScreenImage.LoadContent();
+            splashScreenImage.Position = new Vector2(ScreenManager.Instance.dimensions.X / 2, ScreenManager.Instance.dimensions.Y / 2);
         }
         public override void UnloadContent()
         {
@@ -32,20 +30,18 @@ namespace RogueLike.Screens
 
         public override void Update(GameTime gameTime)
         {
-            cursor.Update(gameTime);
             base.Update(gameTime);
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            //if(timer > 5)
-            //{
-            //    ScreenManager.Instance.ChangeScreen("MainMenuScreen");
-            //}
+            if(timer > 5)
+            {
+                ScreenManager.Instance.ChangeScreen("MainMenuScreen");
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             splashScreenImage.Draw(spriteBatch);
-            cursor.Draw(spriteBatch);
         }
 
         public void LoadImages()

@@ -95,6 +95,7 @@ namespace RogueLike
             Window.Title = gameName + " | FPS: " + (int)fps;
 
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
+            
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
 

@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Libs\Tiled.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\TextFileManager.cs" />
     <Compile Include="Program.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\LoadSettingsScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
+    <Compile Include="Screens\PlayScreen.cs" />
     <Compile Include="Screens\SplashScreen.cs" />
     <Compile Include="Utils\AnimatedTexture.cs" />
     <Compile Include="Utils\Cursor.cs" />
@@ -65,9 +67,11 @@
     <Content Include="Content\Cursors\Cursor1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\MainMenuBG.png" />
     <Content Include="Content\SplashScreenImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\TileMaps\Tileset1.png" />
     <Content Include="Icon.ico" />
     <Content Include="Settings\BootSettings.txt" />
   </ItemGroup>
@@ -76,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\TMXMaps\Test1.tmx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

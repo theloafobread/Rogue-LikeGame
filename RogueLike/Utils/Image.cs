@@ -59,7 +59,7 @@ namespace RogueLike.Utils
             }
 
             if (SourceRect == Rectangle.Empty)
-                SourceRect = new Rectangle(0, 0, (int)(dimensions.X * ScreenManager.Instance.scale), (int)dimensions.Y * ScreenManager.Instance.scale);
+                SourceRect = new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y);
 
             renderTarget = new RenderTarget2D(ScreenManager.Instance.GraphicsDevice, (int)dimensions.X, (int)dimensions.Y);
             ScreenManager.Instance.GraphicsDevice.SetRenderTarget(renderTarget);
@@ -86,8 +86,8 @@ namespace RogueLike.Utils
         public void Draw(SpriteBatch spriteBatch)
         {
             origin = new Vector2(SourceRect.Width / 2, SourceRect.Height / 2);
-            spriteBatch.Draw(Texture, SourceRect, Color.White);
-            //spriteBatch.Draw(Texture, Position + origin, SourceRect, Color.White * Alpha, 0.0f, origin, Scale, SpriteEffects.None, 0.0f);
+            //spriteBatch.Draw(Texture, SourceRect, Color.White);
+            spriteBatch.Draw(Texture, Position, SourceRect, Color.White * Alpha, 0.0f, origin, Scale * ScreenManager.Instance.scale, SpriteEffects.None, 0.0f);
         }
     }
 }
