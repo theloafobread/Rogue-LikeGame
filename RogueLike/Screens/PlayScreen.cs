@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using RogueLike.Libs.Tiled;
 using RogueLike.Managers;
 using RogueLike.Utils;
 using Microsoft.Xna.Framework.Content;
@@ -15,7 +14,7 @@ namespace RogueLike.Screens
 {
     class PlayScreen : GameScreen
     {
-        Map map;
+        public Map map1;
 
         ContentManager content;
 
@@ -23,15 +22,37 @@ namespace RogueLike.Screens
 
         Texture2D test;
 
+        TextFileManager tfm;
+
+        public int mapSize;
+
         public override void LoadContent()
         {
+            tfm = ScreenManager.Instance.tfm;
+
             content = ScreenManager.Instance.Content;
-            map = new Map();
-            map = Map.Load("Content/TMXMaps/Test1.tmx", content);
             cursor = new Cursor();
             cursor.LoadContent();
 
-            test = content.Load<Texture2D>("TileMaps/Tileset1");
+            string data = tfm.GetDataFromFile("Load/Maps/Map1.txt");
+            string[] values = tfm.GetSettingSection(data);
+
+            int column = 0;
+            int row = 0;
+
+            foreach (string str in values)
+            {
+                string[] value = tfm.GetSettings(str);
+                map1.Layers[0].mapGrid[column, row] = Int32.Parse(tfm.GetSettingValue(value, column.ToString()));
+                column++;
+                if(column == 9)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+
+            //test = content.Load<Texture2D>("TileMaps/Tileset1");
         }
         public override void UnloadContent()
         {
@@ -40,14 +61,11 @@ namespace RogueLike.Screens
 
         public override void Update(GameTime gameTime)
         {
-            //map.Layers["Collision"].Opacity = 0;
-            //map.Layers["Visual"].Opacity = 1;
             cursor.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            map.Draw(spriteBatch, new Rectangle(0, 0, (int)ScreenManager.Instance.dimensions.X, (int)ScreenManager.Instance.dimensions.Y), new Vector2(0,0));
             cursor.Draw(spriteBatch);
             //spriteBatch.Draw(test, new Rectangle(0,0,(int)ScreenManager.Instance.dimensions.X, (int)ScreenManager.Instance.dimensions.Y), Color.White);
         }

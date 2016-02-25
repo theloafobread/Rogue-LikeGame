@@ -42,7 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
-    <Compile Include="Libs\Tiled.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\TextFileManager.cs" />
     <Compile Include="Program.cs" />
@@ -55,6 +54,9 @@
     <Compile Include="Utils\AnimatedTexture.cs" />
     <Compile Include="Utils\Cursor.cs" />
     <Compile Include="Utils\Image.cs" />
+    <Compile Include="Utils\Layer.cs" />
+    <Compile Include="Utils\Map.cs" />
+    <Compile Include="Utils\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -64,15 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Cursors\Cursor1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\Cursors\Cursor1.png" />
     <Content Include="Content\MainMenuBG.png" />
-    <Content Include="Content\SplashScreenImage.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\TileMaps\Tileset1.png" />
+    <Content Include="Content\SplashScreenImage.png" />
+    <Content Include="Content\Levels\Tileset1.png" />
     <Content Include="Icon.ico" />
+    <Content Include="Load\Maps\Map1.txt" />
     <Content Include="Settings\BootSettings.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +81,7 @@
     <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\TMXMaps\Test1.tmx" />
+    <Content Include="Content\Levels\Test1.tmx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
